@@ -4,13 +4,13 @@ function  getstatic(url,data={},method='post'){
 	return new Promise(reslove,reject){
 		uni.request({
 			url:Base_Url+url;
-			method:method,
-			data:data,				
-			success:(res){
+			method,
+			data,				
+			success:(res)=>{
 				reslove(res);
 			},
-			fail:(res){
-				reject(res);
+			fail:(err)=>{
+				reject(err);
 			}
 		})
 	}
