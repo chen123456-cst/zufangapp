@@ -7,10 +7,29 @@
 			}
 		}
 	    ,{
-            "path" : "pages/nav/nav",
+			// 头部导航栏
+            "path" : "pages/cnav/cnav",
             "style" : {
 				"navigationStyle":"custom"
 			}
+        }
+        ,{
+			// 选择用户还是工人登录
+            "path" : "pages/cindex/cindex",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+			// 用户注册
+            "path" : "pages/userlogin/userlogin",
+            "style" : {
+				"navigationStyle":"custom"
+			}
+        }
+        ,{
+            "path" : "component/userphoto/userphoto",
+            "style" : {}
         }
     ],
 	"globalStyle": {
