@@ -1,0 +1,1 @@
+<view><view class="nav ">{{title+''}}<text data-event-opts="{{[['tap',[['exit']]]]}}" class="cuIcon-back" bindtap="__e"></text><block wx:if="{{isshow}}"><text class="cuIcon-notice"></text></block></view></view>
