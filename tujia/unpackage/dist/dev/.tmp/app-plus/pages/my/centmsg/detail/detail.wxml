@@ -1,0 +1,1 @@
+<view class="data-v-24e836be"><cnav vue-id="1" title="保修详情" class="data-v-24e836be" bind:__l="__l"></cnav><view class="allmsg data-v-24e836be"><allmsg vue-id="2" title="水管维修" isshow="{{true}}" class="data-v-24e836be" bind:__l="__l"></allmsg></view></view>

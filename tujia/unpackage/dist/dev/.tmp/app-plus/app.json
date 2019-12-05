@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/cindex/cindex",
+    "pages/index/index",
+    "pages/cnav/cnav",
+    "pages/userlogin/userlogin",
+    "pages/userregister/userregister",
+    "pages/mananger/mananger",
+    "component/allmsg/allmsg",
+    "component/msgtitle/msgtitle",
+    "pages/my/my",
+    "pages/clicent/clicent",
+    "pages/wokerlogin/wokerlogin",
+    "pages/workerregister/workerregister",
+    "pages/msgcenter/msgcenter",
+    "pages/userdetail/userdetail",
+    "pages/my/centmsg/centmsg",
+    "pages/my/safe/safe",
+    "pages/my/mysafe/mysafe",
+    "pages/my/mysafe/mybaoxiu/mybaoxiu",
+    "pages/my/centmsg/detail/detail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#CCC",
+    "selectedColor": "#2C405A",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/mananger/mananger",
+        "text": "社区管理"
+      },
+      {
+        "pagePath": "pages/clicent/clicent",
+        "text": "客服"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "nvueCompiler": "uni-app",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "dangdibang",
+  "compilerVersion": "2.4.2",
+  "usingComponents": {}
+}

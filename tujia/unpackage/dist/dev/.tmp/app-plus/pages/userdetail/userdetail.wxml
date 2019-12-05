@@ -1,0 +1,1 @@
+<view class="data-v-5d5efed7"><cnav vue-id="1" title="消息详情" class="data-v-5d5efed7" bind:__l="__l"></cnav><view class="allmsg data-v-5d5efed7"><allmsg vue-id="2" class="data-v-5d5efed7" bind:__l="__l"></allmsg></view><view class="msgtitle data-v-5d5efed7"><msgtitle vue-id="3" class="data-v-5d5efed7" bind:__l="__l"></msgtitle></view></view>
