@@ -28,7 +28,23 @@
 			}
         }
         ,{
-            "path" : "component/userphoto/userphoto",
+            "path" : "component/swiper/swiper",
+            "style" : {}
+        },
+		{
+			"path":"pages/gstreet/gstreet",
+			"style":{}
+		}
+        ,{
+            "path" : "pages/gpeople/gpeople",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/gbaoxiu/gbaoxiu",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/csafe/csafe",
             "style" : {}
         }
     ],

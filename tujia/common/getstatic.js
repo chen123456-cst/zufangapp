@@ -6,10 +6,10 @@ function  getstatic(url,data={},method='post'){
 			url:Base_Url+url,
 			method:method,
 			data:data,				
-			success:(res){
+			success:(res)=>{
 				reslove(res);
 			},
-			fail:(res){
+			fail:(res)=>{
 				reject(res);
 			}
 		})
@@ -17,6 +17,6 @@ function  getstatic(url,data={},method='post'){
 }
 //promise请求;
 export{
-	getstatic;
-	Base_Url;
+	getstatic,
+	Base_Url
 }
