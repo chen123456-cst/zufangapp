@@ -2,11 +2,12 @@
 	<view>
 		<cnav title="基本信息"></cnav>
 		<view class="humanmsg">
-			<view>
+			<view >
 				<text>头像</text>
 				<!-- 更换头像功能 -->
 				<view class="imgchos" @tap="handleimg">
-					<image :src="imgurl" mode="aspectFill"></image>
+					<image :src="imgurl" mode="aspectFill" v-if="!isshow"></image>
+					<image :src="Base_Url+userinfo.imgurl" v-if="isshow" mode="aspectFill"></image>
 				</view>
 			</view>
 			<view>
@@ -15,7 +16,7 @@
 			</view>
 			<view>
 				<text>电话</text>
-				<input type="text" v-model="userinfo.tel">
+				<input type="text" v-model="userinfo.tel" disabled="true">
 			</view>
 			<view>
 				<text>生日</text>
@@ -40,18 +41,36 @@
 		},
 		data() {
 			return {
+				tel:'',
 				userinfo:{
-					username:'1111',
-					tel:'18875152489',
+					username:'请输入用户姓名',
+					tel:'',
 					password:'',
 					imgurl:'',
-					birth:'1997.1.16',
-					address:'重庆市九龙坡',
+					birth:'',
+					address:'',
 					street:''
 				},
+				Base_Url:Base_Url,
 				imgurl:'',
-				Base_Url:Base_Url
+				isshow:true
 			}
+		},
+		onLoad(){
+			// 获取登录用户信息
+			let data={};
+			uni.getStorage({
+				key:'dsaddsad',
+				success:(res)=>{
+					this.userinfo=res.data;
+				}
+			})
+		    data=this.userinfo;
+			getstatic('/users/list',data,'get').then((res)=>{
+				if(res.data.code==1){
+					this.userinfo=res.data.data[0];
+				}
+			})
 		},
 		methods: {
 			// 更换头像的功能
@@ -60,7 +79,9 @@
 					count:1,
 				    success: (res)=> {
 					let temp = res.tempFilePaths[0];
+					this.isshow=false;
 					this.imgurl=temp;
+					console.log(this.imgurl);
 					uni.uploadFile({
 					    url: this.Base_Url+'/admin/imgurl',
 					    filePath: temp,
@@ -77,8 +98,13 @@
 			// 保存数据功能
 			reserve(){
 				let data=this.userinfo
-				getstatic('/admin/user',data,'get').then((res)=>{
-					console.log(res);
+				getstatic('/users/xiugai',data,'get').then((res)=>{
+					if(res.data.code==1){
+						this.userinfo=res.data.data;
+						uni.showToast({
+							title:'保存成功'
+						})
+					}
 				})
 			}
 		}
@@ -87,7 +113,7 @@
 
 <style lang="scss" scoped>
 	page{
-		background:#ccc;
+		background:#eee;
 		height:100%;
 	}
 		.humanmsg{

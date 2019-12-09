@@ -8,7 +8,9 @@
 	<!-- 街道管理员 -->
 	<view class="headerman">
 		<view>
-			<view class="imgbox"></view>
+			<view class="imgbox">
+				<image src="../../static/img/7.png" mode="aspectFill"></image>
+			</view>
 		</view>
 		<view>
 			<view class="human">
@@ -81,7 +83,11 @@
 				border-radius: 50%;
 				margin-left: 124upx;
 				margin-top: 24upx;
-				background:#1CBBB4;
+				image{
+					width:100%;
+					height:100%;
+					border-right: 50%;
+				}
 				
 			}
 			.human{

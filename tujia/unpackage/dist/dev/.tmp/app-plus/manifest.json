@@ -4,7 +4,7 @@
     "iPhone",
     "iPad"
   ],
-  "id": "",
+  "id": "__UNI__1EAA69B",
   "name": "dangdibang",
   "version": {
     "name": "1.0.0",
@@ -84,7 +84,7 @@
     },
     "allowsInlineMediaPlayback": true,
     "safearea": {
-      "background": "#FFFFFF",
+      "background": "#ffffff",
       "bottom": {
         "offset": "auto"
       }
@@ -99,8 +99,9 @@
       }
     },
     "tabBar": {
-      "color": "#CCC",
-      "selectedColor": "#2C405A",
+      "color": "#7A7E83",
+      "selectedColor": "#004381",
+      "backgroundColor": "#ffffff",
       "list": [
         {
           "pagePath": "pages/index/index",

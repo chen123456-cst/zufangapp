@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<cnav title="邀请加入"></cnav>
 		<view class="tel">手机号</view>
 		<input type="text" placeholder="请输入手机号码">
 		<view class="nei">邀请内容</view>
@@ -9,6 +10,7 @@
 </template>
 
 <script>
+	import cnav from '../cnav/cnav.vue'
 	export default {
 		data() {
 			return {
@@ -17,11 +19,14 @@
 		},
 		methods: {
 			
+		},
+		components:{
+			cnav
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 page{
 	background:#EEEEEE
 	}

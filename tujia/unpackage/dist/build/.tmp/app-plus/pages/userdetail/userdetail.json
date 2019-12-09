@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "cnav": "/pages/cnav/cnav",
+    "msgtitle": "/component/msgtitle/msgtitle",
+    "allmsg": "/component/allmsg/allmsg"
+  }
+}

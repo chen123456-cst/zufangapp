@@ -2,11 +2,11 @@
 	<view>
 		<cnav title="消息中心"></cnav>
 		<view class="all">
-			<view class="cu-item text-white cur">系统消息</view>
-			<view class="cu-item text-white cur">对账单</view>
-			<view class="cu-item text-white cur">保修进度</view>
+			<view class="cu-item text-white cur" @tap="i=0">系统消息</view>
+			<view class="cu-item text-white cur" @tap="i=1">对账单</view>
+			<view class="cu-item text-white cur" @tap="i=2">保修进度</view>
 		</view>
-		<view class="todystore" v-for="(item,index) in listarr" :key="index">
+		<view class="todystore" v-for="(item,index) in listarr" :key="index" v-if="i==0">
 			<view class="title">今日故事</view>
 			<view class="intro">{{item.intro}}</view>
 			<view class="foos">
@@ -14,14 +14,18 @@
 				<text @tap="check">查看详情</text>
 			</view>
 		</view>
+		<gbaoxiu v-for="(item,index) in userlist" :key="index" :list="item" v-if="i==2"></gbaoxiu>
 	</view>
 </template>
 
 <script>
 	import cnav from '../cnav/cnav'
+	import gbaoxiu from '../../component/gbaoxiu/index.vue'
+	import {getstatic} from '../../common/getstatic.js'
 	export default {
 		components:{
 			cnav,
+			gbaoxiu
 		},
 		data() {
 			return {
@@ -32,7 +36,9 @@
 					intro:'社区黄小号中大奖其70岁的父亲到成都市培华路社区办事，与社区工作人员生发口角，被社区工作人员打伤。人民网某记者对此事进行了调查',
 					}
 				],
-				time:''
+				time:'',
+				userlist:[],
+				i:0
 			}
 		},
 		onShow(){
@@ -40,13 +46,45 @@
 			let time=data.getFullYear()+'.'+parseInt(data.getMonth()+1)+'.'+parseInt(data.getDay()+1);
 			this.time=time;
 		},
+		created(){
+			// 请求保修数据
+			this.gett();
+		},
+		onPullDownRefresh(){
+			uni.showLoading({
+			  title:'拼命加载中'
+			})
+			this.gett();
+			 setTimeout(()=>{
+							uni.stopPullDownRefresh();
+							uni.hideLoading()
+			},1000)
+		},
 		methods: {
 			// 查看详情
 			check(){
-				console.log(1);
 				uni.navigateTo({
 					url:'../userdetail/userdetail'
 				})
+			},
+			gett(){
+				let tel=''
+				uni.getStorage({
+					key: 'dsaddsad',
+					success: (res) => {
+					tel = res.data.tel;
+					}
+				});
+				let data = {};
+				getstatic('/admin/usermsg', data, 'get').then(res => {
+					if (res.data.code == 1) {
+						let list;
+						list = res.data.data;
+						this.userlist = list.filter(obj => {
+							return obj.usertel == tel;
+						});
+					}
+				});
 			}
 		}
 	}

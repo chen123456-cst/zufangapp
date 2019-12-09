@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<cnav title="账号安全"></cnav>
 		<view class="box">
 			<view>
 				<text>手机号</text>
@@ -25,14 +26,16 @@
 		</view>
 		<view class="checkBox">
 			<label  style="width:27upx;height:27upx;">
-				<checkbox checked="true" value="cb"/><text>我已阅读用户协议</text>
+				<checkbox :checked="boo" value="cb" disabled="true"/><text>我已阅读用户协议</text>
 			</label>
 		</view>
-		<button class='btn' @tap="handel">保存</button>
+		<button class='btn' @tap="handle" :disabled="cst">保存</button>
 	</view>
 </template>
 
 <script>
+	import cnav from '../cnav/cnav.vue'
+	import {getstatic} from '../../common/getstatic.js'
 	export default {
 		data() {
 			return {
@@ -42,16 +45,32 @@
 				Password:'',
 				yan:'',
 				cb:'j',
-				yanzhengma:[]
+				yanzhengma:'',
+				boo:true
 			}
+		},
+		computed:{
+			cst(){
+				if(this.tel===''||this.oldword===''||this.password===''||this.Password===''||this.yan===''){
+					return true
+				}else{
+					return false
+				}
+			}
+		},
+		components:{
+			cnav
 		},
 		onLoad(){
 			this.yanzheng()
+			uni.getStorage({
+				key:'dsaddsad',
+				success:(res)=>{
+					this.tel=res.data.tel
+				}
+			})
 		},
 		methods: {
-			handel(){
-				
-			},
 			yanzheng(){
 				var arr=[]
 				for(var i=65;i<=90;i++){
@@ -74,6 +93,46 @@
 			},
 			change(){
 				this.yanzheng()
+			},
+			handle(){
+				if(this.password!=this.Password){
+					uni.showToast({
+						title:'两次密码不匹配，请确认',
+						icon:'none'
+					})
+				}else if(this.yan.toUpperCase()!=this.yanzhengma.toUpperCase()){
+					uni.showToast({
+						title:'验证码错误，请重新输入',
+						icon:'none'
+					})
+					this.yanzheng()
+				}else{
+					let old={
+						password:this.oldword
+					}
+					let new1={
+						tel:this.tel,
+						password:this.password,
+					}
+					let data={
+						old,
+						new1
+					}
+					getstatic('/users/update',data).then((res)=>{
+						if(res.data.code==1){
+							
+							setTimeout(()=>{
+								uni.navigateTo({
+									url:'../userregister/userregister'
+								})
+							},1000)
+							uni.showToast({
+								title:'密码修改成功',
+								icon:'none'
+							})
+						}
+					})
+				}
 			}
 		}
 	}

@@ -102,11 +102,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"component/userphoto/userphoto":1};
+/******/ 		var cssChunks = {"pages/cnav/cnav":1,"pages/gbaoxiu/gbaoxiu":1,"pages/gpeople/gpeople":1,"component/swiper/swiper":1,"component/msgtitle/msgtitle":1,"component/allmsg/allmsg":1,"component/gbaoxiu/index":1,"component/userphoto/userphoto":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"component/userphoto/userphoto":"component/userphoto/userphoto"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"pages/cnav/cnav":"pages/cnav/cnav","pages/gbaoxiu/gbaoxiu":"pages/gbaoxiu/gbaoxiu","pages/gpeople/gpeople":"pages/gpeople/gpeople","component/swiper/swiper":"component/swiper/swiper","component/msgtitle/msgtitle":"component/msgtitle/msgtitle","component/allmsg/allmsg":"component/allmsg/allmsg","component/gbaoxiu/index":"component/gbaoxiu/index","component/userphoto/userphoto":"component/userphoto/userphoto"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

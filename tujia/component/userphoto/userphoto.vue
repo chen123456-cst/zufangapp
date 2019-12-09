@@ -3,7 +3,9 @@
 		<view class="userphoto">
 			<view>
 				<view>
-					<text class="cuIcon-profile"></text>
+					
+						<image src="../../static/img/7.png" mode="aspectFill"></image>
+					
 				</view>
 			</view>
 		</view>
@@ -48,12 +50,22 @@
 		 >view{
 			  width:124upx;
 			  height:124upx;
-			  background: #007AFF;
+			  // background: #007AFF;
 			  border-radius: 50%;
 			  display: flex;
 			  justify-content: center;
 			  align-items: center;
 			  font-size: 60upx;
+			  position: relative;
+			  image{
+				  position: absolute;
+				  top:50%;
+				  left:50%;
+				  transform: translate(-50%,-50%);
+				  width:100%;
+				  height:100%;
+				  border-radius: 50%;
+			  }
 		 }
 	 };
 	}

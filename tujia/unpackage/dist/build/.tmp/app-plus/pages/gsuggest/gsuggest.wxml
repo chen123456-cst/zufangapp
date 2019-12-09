@@ -1,0 +1,1 @@
+<view class="data-v-0a66fdf7"><cnav vue-id="1" title="保修建议" class="data-v-0a66fdf7" bind:__l="__l"></cnav><view class="title data-v-0a66fdf7">投诉建议</view><textarea placeholder="请填写你的建议" class="data-v-0a66fdf7"></textarea><view class="btn data-v-0a66fdf7">保存</view></view>

@@ -1,19 +1,18 @@
 <template>
 	<view>
-		<swiperA></swiperA>
 		<view class="bgbox">
 			<view class="header">
 				<text>业主</text>
 				<text></text>
-				<text>09</text>
-				<text>邀请加入街道</text>
+				<text>{{n}}</text>
+				<text @tap="invite">邀请加入街道</text>
 			</view>
 			<view class="box">
 				<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-					<swiper-item v-for="(item,index) in 3">
+					<swiper-item v-for="(item,index) in i" :key="index">
 						<view class="swiper-item">
-							<view v-for="(item,index) in 8" class="imgd" @tap="handleShow">
-								<text>{{item}}</text>
+							<view v-for="(item,index) in userlist" :key="index" class="imgd" @tap="handleShow(index)">
+								<image :src="Base_Url+item.imgurl" mode="aspectFill"></image>
 							</view>
 						</view>
 					</swiper-item>
@@ -24,27 +23,26 @@
 			<view class="header">
 				<text>商户</text>
 				<text></text>
-				<text>09</text>
-				<text>邀请加入街道</text>
+				<text>{{n}}</text>
 			</view>
 			<view class="box">
 				<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-					<swiper-item v-for="(item,index) in 3">
+					<swiper-item v-for="(item,index) in i" :key="index">
 						<view class="swiper-item">
-							<view v-for="(item,index) in 8" class="imgd">
-								<text>{{item}}</text>
+							<view v-for="(item,index) in userlist" :key="index" class="imgd" @tap="handleShow(index)">
+								<image :src="Base_Url+item.imgurl" mode="aspectFill"></image>
 							</view>
 						</view>
 					</swiper-item>
 				</swiper>
 			</view>
 		</view>
-		<view class="motai" v-show='isShow'>
+		<view class="motai" v-show='isShow' v-if="userlist.length!=0">
 			<view>
-			<image src="../../static/logo.png" mode=""></image>
-			<view>昵称</view>
-			<view>电话</view>
-			<view>地址</view>
+			<image :src="Base_Url+userlist[j].imgurl" mode="aspectFill"></image>
+			<view>昵称{{userlist[j].username}}</view>
+			<view>电话{{userlist[j].tel}}</view>
+			<view>地址{{userlist[j].address}}</view>
 			<textarea value="" placeholder="备注信息" />
 			<view>保存</view>
 			<text class="cuIcon-close" @tap="isShow=false"></text>
@@ -54,7 +52,9 @@
 </template>
 
 <script>
-	import swiperA from '../../component/swiper/swiper.vue'
+	// import swiperA from '../../component/swiper/swiper.vue'
+	// import cnav from '../cnav/cnav.vue'
+	import {getstatic,Base_Url} from '../../common/getstatic.js'
 	export default {
 		data() {
 			return {
@@ -63,20 +63,41 @@
 				autoplay: false,
 				interval: 2000,
 				duration: 500,
-				isShow:false
+				isShow:false,
+				Base_Url:Base_Url,
+				userlist:[],
+				i:0,
+				j:0,
+				n:0
 			}
 		},
 		methods: {
-			handleShow(){
+			handleShow(index){
 				this.isShow=true
+				this.j=index;
+			},
+			invite(){
+				uni.navigateTo({
+					url:'../gmessage/gmessage'
+				})
+			},
+		    gett(){
+				// 获取全部用户信息
+				let data={};
+				 getstatic('/userslist',data,'get').then((res)=>{
+					 if(res.data.code==1){
+					 	this.userlist=res.data.data;
+					 	this.n=this.userlist.length;
+					 	this.i=Math.ceil(this.userlist.length/8)	
+					 }
+				 })
 			}
 		},
-		components: {
-			swiperA
-		}
+	    created(){
+			this.gett()
+		},
 	}
 </script>
-
 <style lang="scss" scoped>
 .box{
 	height:347upx;
@@ -85,18 +106,27 @@
 	height:347upx;
 }
 .swiper-item{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-content: space-around;
-	padding:0 37upx;
 	height:347upx;
+	>view{
+		width:25%;
+		display: inline-block;
+	}
 }
 .imgd{
 	width:136upx;
 	height:136upx;
-	border-radius: 50%;
-	border:1upx solid #EEEEEE;
+	// border-radius: 50%;
+	// border:1upx solid #EEEEEE;
+	position: relative;
+	image{
+		position: absolute;
+		left:50%;
+		top:50%;
+		transform: translate(-50%,-50%);
+		width:136upx;
+		height:136upx;
+		border-radius: 50%;
+	}
 }
 .header{
 	height:79upx;

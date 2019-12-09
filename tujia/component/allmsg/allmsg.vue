@@ -2,10 +2,10 @@
 	<view>
 		<view class="head">
 			<view>
-				<text>{{title}}</text>
+				<text>重庆</text>
 				<text>{{time}}</text>
 			</view>
-			<view v-if="isshow">待上门</view>
+			<view>待处理</view>
 		</view>
 	</view>
 </template>
@@ -13,13 +13,8 @@
 <script>
 	export default {
 		props:{
-			title:{
-				type:String,
-				default:'社区消息'
-			},
-			isshow:{
-				type:Boolean,
-				default:false,
+			list:{
+				type:Object,
 			}
 		},
 		data() {

@@ -1,0 +1,33 @@
+
+page.data-v-58fadcb7{
+	background:#EEEEEE
+}
+.title.data-v-58fadcb7{
+	background:#fff;
+	font-size:30rpx;
+	color:rgba(51,51,51,1);
+	line-height:80rpx;
+	padding-left:35rpx;
+	height:80rpx;
+	border-bottom:1rpx solid #EEEEEE;
+}
+textarea.data-v-58fadcb7{
+	height:300rpx;
+	width:100%;
+	background:#fff;
+	padding:26rpx 34rpx;
+	font-size:24rpx;
+}
+.btn.data-v-58fadcb7{
+	width:706rpx;
+	background:rgba(0,67,129,1);
+	border-radius:10rpx;
+	margin-left:22rpx;
+	margin-top:256rpx;
+	text-align: center;
+	line-height:74rpx;
+	height:74rpx;
+	color:rgba(244,244,244,1);
+	font-size:30rpx;
+}
+

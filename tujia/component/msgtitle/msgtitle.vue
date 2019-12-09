@@ -26,7 +26,6 @@
 						<text></text>
 						<text></text>
 					</view>
-					<text class="lg cuIcon-right" ></text>
 				</view>
 			</view>
 		</view>
@@ -50,7 +49,7 @@
 		methods: {
 			// 查看更多时间
 			change(){
-				console.log(1);
+				
 			}
 		}
 	}
@@ -151,9 +150,6 @@
 						border-radius: 50%;
 						background:#C0C0C0;
 					}
-				}
-				.cuIcon-right{
-					font-size: 30upx;
 				}
 			}
 		}

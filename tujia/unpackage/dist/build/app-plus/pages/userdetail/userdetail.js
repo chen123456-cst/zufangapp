@@ -1,0 +1,2 @@
+setCssToHead(["@charset \x22UTF-8\x22;\n.",[1],"allmsg.",[1],"data-v-665d818e { margin-top: ",[0,24],"; }\n.",[1],"msgtitle.",[1],"data-v-665d818e { margin-top: ",[0,18],"; }\n",],undefined,{path:"./pages/userdetail/userdetail.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/userdetail/userdetail.wxml') } }));

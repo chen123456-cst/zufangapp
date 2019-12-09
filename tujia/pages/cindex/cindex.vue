@@ -7,16 +7,16 @@
 				<view class="user2"></view>
 			</view>
 				<view class="userall" @tap="login()">
-					<text class="cuIcon-profile"></text>
+					<image src="../../static/img/7.png"></image>
 					<text>我是用户</text>
 				</view>
 		</view>
-		<view class="user worker">
-			<view class="user1 worker1" @tap="login2">
+		<view class="user worker" @tap="login2">
+			<view class="user1 worker1">
 				<view class="user2 worker2"></view>
 			</view>
 				<view class="userall workerall">
-					<text class="cuIcon-profile"></text>
+					<image src="../../static/img/7.png"></image>
 					<text>我是工人</text>
 				</view>
 		</view>
@@ -40,6 +40,12 @@
 				// 跳转至用户注册端
 				uni.navigateTo({
 					url:'../userlogin/userlogin'
+				})
+			},
+			// 跳转到工人注册端
+			login2(){
+				uni.navigateTo({
+					url:'../wokerlogin/wokerlogin'
 				})
 			}
 		}
@@ -85,10 +91,10 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		.cuIcon-profile{
-			font-size: 80upx;
-			margin-bottom: 32upx;
-		
+		>image{
+			width:150upx;
+			height:150upx;
+			border-radius: 50%;
 		}
 		>text:nth-of-type(2){
 			letter-spacing: 10upx;

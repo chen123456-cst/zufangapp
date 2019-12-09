@@ -1,34 +1,30 @@
 <template>
 	<view>
-		<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-			<swiper-item>
-				<view class="swiper-item uni-bg-red">A</view>
-			</swiper-item>
-			<swiper-item>
-				<view class="swiper-item uni-bg-green">B</view>
-			</swiper-item>
-			<swiper-item>
-				<view class="swiper-item uni-bg-blue">C</view>
+		<swiper class="swiper"  :autoplay="autoplay" >
+			<swiper-item v-for="(item,index) in imglist" :key="index"> 
+				<view class="swiper-item uni-bg-red">
+					<image :src="item" mode="aspectFill" ></image>
+				</view>
 			</swiper-item>
 		</swiper>
 		<view class="nav1">
-			<view>
+			<view @click="handlesel(0)">
 				<view class="kuang orange">
 				<text class="cuIcon-barcode"></text>
 				</view>
-				<view class="content">街道管理</view>
+				<view class="content" >街道管理</view>
 			</view>
-			<view>
+			<view  @click="handlesel(1)">
 				<view class="kuang green">
 				<text class="cuIcon-friend"></text>
 				</view>
-				<view class="content">街道成员</view>
+				<view class="content" >街道成员</view>
 			</view>
-			<view>
+			<view  @click="handlesel(2)">
 				<view class="kuang blue">
 				<text class="cuIcon-settings"></text>
 				</view>
-				<view class="content">我的报修</view>
+				<view class="content" @click="handlesel(2)">我的报修</view>
 			</view>
 		</view>
 	</view>
@@ -42,7 +38,19 @@
 				 indicatorDots: true,
 				 autoplay: true,
 				 interval: 2000,
-				 duration: 500
+				 duration: 500,
+				 imglist:['../../static/img/1.jpg','../../static/img/2.jpg','../../static/img/3.jpg',]
+			}
+		},
+		methods:{
+			handle(i){
+				uni.navigateTo({
+					url:i
+				})
+			},
+			// 子父通信
+			handlesel(i){
+				this.$emit('tranfrom',i)
 			}
 		}
 	}
@@ -73,6 +81,9 @@
 			font-size:54upx;
 			color:#fff;
 		}
+	}
+	.swiper-item,image{
+		height:100%;
 	}
 	.content{
 		margin-top:8upx;

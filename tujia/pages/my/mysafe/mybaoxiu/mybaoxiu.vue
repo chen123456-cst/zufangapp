@@ -6,7 +6,7 @@
 		<view class="all">
 			<view>
 				<text>联系电话</text>
-				<input type="text" placeholder="请输入联系电话" v-model="info.tel">
+				<input type="text" placeholder="请输入联系电话" v-model="info.usertel">
 			</view>
 			<view>
 				<text>上门时间</text>
@@ -67,7 +67,8 @@
 					 address:'',
 					 content:'',
 					 imgurl:'',
-					 num:''
+					 num:'0',
+					 usertel:''
 				}
 			}
 		},
@@ -78,6 +79,15 @@
 		     endDate() {
 		         return this.getDate('end');
 		     }
+		 },
+		 onShow(){
+			 uni.getStorage({
+			 	key:'dsaddsad',
+				success:(res)=>{
+					console.log(res)
+					this.info.tel=res.data.tel
+				}
+			 })
 		 },
 		methods: {
 			  bindPickerChange: function(e) {
@@ -110,8 +120,19 @@
 						 this.info.time=this.date;
 						 console.log(this.info);
 						 let data=this.info;
-						 getstatic('/admin/baoxiu').then((res)=>{
-							 console.log(res);
+						 console.log(data);
+						 getstatic('/users/baoxiu',data,'get').then((res)=>{
+							 if(res.data.code==1){
+								 setTimeout(()=>{
+									 uni.switchTab({
+									 	url:'../../my'
+									 })
+								 },1000)
+								 uni.showToast({
+								 	title:'发布成功',
+								 	icon:'none'
+								 })
+							 }
 						 })
 					 },
 					// 上传照片的功能

@@ -1,0 +1,9 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "swiper-a": "/component/swiper/swiper",
+    "cnav": "/pages/cnav/cnav",
+    "gpeople": "/pages/gpeople/gpeople",
+    "gbaoxiu": "/pages/gbaoxiu/gbaoxiu"
+  }
+}

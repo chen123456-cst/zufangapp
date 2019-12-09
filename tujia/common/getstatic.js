@@ -1,5 +1,5 @@
 // 基础线上请求路径
-const Base_Url="";
+const Base_Url="http://106.13.74.16:3000";
 function  getstatic(url,data={},method='post'){
 	return new Promise((reslove,reject)=>{
 		uni.request({
@@ -9,8 +9,8 @@ function  getstatic(url,data={},method='post'){
 			success:(res)=>{
 				reslove(res);
 			},
-			fail:(res)=>{
-				reject(res);
+			fail:(err)=>{
+				reject(err);
 			}
 		})
 	})
@@ -18,5 +18,5 @@ function  getstatic(url,data={},method='post'){
 //promise请求;
 export{
 	getstatic,
-	Base_Url
+	Base_Url,
 }

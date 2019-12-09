@@ -1,0 +1,10 @@
+(global["webpackJsonp"]=global["webpackJsonp"]||[]).push([["component/gbaoxiu/index"],{3983:function(t,n,e){"use strict";e.r(n);var i=e("4100"),s=e("9c38");for(var a in s)"default"!==a&&function(t){e.d(n,t,function(){return s[t]})}(a);e("f841");var u=e("2877"),c=Object(u["a"])(s["default"],i["a"],i["b"],!1,null,"796d65dc",null);n["default"]=c.exports},4100:function(t,n,e){"use strict";var i=function(){var t=this,n=t.$createElement;t._self._c},s=[];e.d(n,"a",function(){return i}),e.d(n,"b",function(){return s})},"4f3e":function(t,n,e){},"9c38":function(t,n,e){"use strict";e.r(n);var i=e("fd08"),s=e.n(i);for(var a in i)"default"!==a&&function(t){e.d(n,t,function(){return i[t]})}(a);n["default"]=s.a},f841:function(t,n,e){"use strict";var i=e("4f3e"),s=e.n(i);s.a},fd08:function(t,n,e){"use strict";(function(t,i){Object.defineProperty(n,"__esModule",{value:!0}),n.default=void 0;var s=e("2340"),a={props:["list"],data:function(){return{text:"",sisShow:!0,cisShow:!0,num:this.list.num,classNa:"",Base_Url:s.Base_Url}},methods:{handle:function(){var n="id=".concat(this.list._id);t.navigateTo({url:"/pages/my/centmsg/detail/detail?"+n})},hanglecheck:function(){console.log(i(1," at component\\gbaoxiu\\index.vue:46"));var t={id:this.list._id,num:2};(0,s.getstatic)("/update",t,"get").then(function(t){console.log(i(t," at component\\gbaoxiu\\index.vue:52"))})},check:function(){0===Number(this.num)?(this.text="待处理",this.sisShow=!1,this.classNa="blue"):1===Number(this.num)?(this.text="待上门",this.classNa="orange"):(this.text="已完成",this.sisShow=!1,this.cisShow=!1,this.classNa="hui")}},created:function(){this.check()}};n.default=a}).call(this,e("6e42")["default"],e("0de9")["default"])}}]);
+;(global["webpackJsonp"] = global["webpackJsonp"] || []).push([
+    'component/gbaoxiu/index-create-component',
+    {
+        'component/gbaoxiu/index-create-component':(function(module, exports, __webpack_require__){
+            __webpack_require__('6e42')['createComponent'](__webpack_require__("3983"))
+        })
+    },
+    [['component/gbaoxiu/index-create-component']]
+]);                

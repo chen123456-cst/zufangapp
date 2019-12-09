@@ -1,5 +1,6 @@
 <template>
 	<view>
+		<cnav title="保修建议"></cnav>
 		<view class="title">投诉建议</view>
 		<textarea placeholder="请填写你的建议"></textarea>
 		<view class="btn">保存</view>
@@ -7,6 +8,7 @@
 </template>
 
 <script>
+	import cnav from '../cnav/cnav.vue'
 	export default {
 		data() {
 			return {
@@ -15,11 +17,14 @@
 		},
 		methods: {
 			
+		},
+		components:{
+			cnav
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 page{
 	background:#EEEEEE
 }

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "swiper-a": "/component/swiper/swiper",
+    "gbaoxiu": "/component/gbaoxiu/index",
+    "cnav": "/pages/cnav/cnav"
+  },
+  "component": true
+}

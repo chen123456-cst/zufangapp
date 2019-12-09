@@ -8,16 +8,16 @@
 		<!-- 街道管理员 -->
 		<view class="headerman">
 			<view class="imgbox">
-				<image src="../../static/img/1.jpg" mode="aspectFill"></image>
+				<image :src="Base_Url+imgurl" mode="aspectFill"></image>
 			</view>
-			<view class="username">{{name}}</view>
+			<view class="username">{{tel}}</view>
 		</view>
 		<!-- 列表 -->
 		<view class="cu-bar bg-white cu" @tap="login('centmsg/centmsg')">
 		基本信息
 		<text class="cuIcon-right" ></text>
 		</view>
-		<view class="cu-bar bg-white" @tap="login('safe/safe')">
+		<view class="cu-bar bg-white" @tap="login('../csafe/csafe')">
 		账号安全
 		<text class="cuIcon-right" ></text>
 		</view>
@@ -25,7 +25,7 @@
 		我的保修
 		<text class="cuIcon-right"></text>
 		</view>
-		<view class="cu-bar bg-white" @tap="login('rese/rese')">
+		<view class="cu-bar bg-white" @tap="login('../gsuggest/gsuggest')">
 		意见反馈
 		<text class="cuIcon-right"></text>
 		</view>
@@ -35,22 +35,45 @@
 
 <script>
 	import cnav from '../cnav/cnav'
+	import {Base_Url,getstatic} from '../../common/getstatic.js'
 	export default {
+		
 		components:{
 			cnav,
 		},
 		data() {
 			return {
-				name:''
+				tel:'',
+				imgurl:'',
+				Base_Url:Base_Url
 			}
+		},
+		onLoad(){
+			// 获取登录用户信息
+			uni.getStorage({
+				key:'dsaddsad',
+				success:(res)=>{
+					let {tel,imgurl}=res.data;
+					this.tel=tel;
+					this.imgurl=imgurl;
+				}
+			})
 		},
 		onShow(){
 			// 获取登录用户信息
 			uni.getStorage({
 				key:'dsaddsad',
 				success:(res)=>{
-					this.name=res.data.name;
+					let {tel,imgurl}=res.data;
+					this.tel=tel;
+					this.imgurl=imgurl;
 				}
+			})
+			let data={
+				tel:this.tel
+			}
+			getstatic('/users/list',data,'get').then((res)=>{
+			   this.imgurl=res.data.data[0].imgurl;
 			})
 		},
 		methods: {
@@ -90,14 +113,15 @@
 		border-radius:10px;
 		margin: -100upx auto;
 		z-index: 999;
-		overflow: hidden;
+		position:relative;
 		.imgbox{
 			width:136upx;
 			height:136upx;
 			border-radius: 50%;
-			background:#0081FF;
-			margin:0 auto;
-			margin-top: -68upx;
+			position:absolute;
+			top:-68upx;
+			left:50%;
+			transform: translateX(-50%);
 			image{
 				width:100%;
 				height:100%;
@@ -106,8 +130,10 @@
 		}
 		.username{
 			// margin:0 auto;
-			margin-top: 26upx;
-			text-align: center;
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
 			font-size: 36upx;
 			font-weight:bold;
 			color:rgba(51,51,51,1)

@@ -3,7 +3,7 @@
 		<view class="nav ">{{title}}
 		<text class="cuIcon-back" @tap="exit()">
 		</text>
-		<text class="cuIcon-newshot" v-if="isshow"></text>
+		<text class="cuIcon-notice" v-if="isshow"></text>
 		</view>
 	</view>
 </template>
@@ -56,7 +56,7 @@
 	   left:37upx;
 	   font-size: 34upx;
    }
-   .cuIcon-newshot{
+   .cuIcon-notice{
 	   position: absolute;
 	   right:54upx;
 	   font-size: 34upx;
